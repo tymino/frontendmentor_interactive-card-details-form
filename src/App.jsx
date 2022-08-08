@@ -3,24 +3,30 @@ import { useState } from 'react';
 import { Input } from './components';
 
 const App = () => {
-  const [name, setName] = useState({
+  const [cardName, setCardName] = useState({
     value: '',
     error: false,
     errorText: 'err name',
   });
-  const [number, setNamber] = useState({
+  const [cardNumber, setCardNumber] = useState({
     value: '',
     error: false,
     errorText: 'err number',
+  });
+  const [cardDate, setCardDate] = useState({
+    value: '',
+    error: false,
+    errorText: 'err date',
+  });
+  const [cardCVC, setCardCVC] = useState({
+    value: '',
+    error: false,
+    errorText: 'err CVC',
   });
 
   return (
     <div className="app">
       Learn React
-      <br />
-      <Input value={name.value} handleChange={setName} />
-      <br />
-      <Input value={number.value} handleChange={setNamber} />
     </div>
   );
 };
