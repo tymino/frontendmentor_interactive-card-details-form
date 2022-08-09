@@ -38,11 +38,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <Input
-        title="cardholder name"
-        state={cardName}
-        setState={changeName}
-      />
+      <Input title="cardholder name" state={cardName} setState={changeName} />
 
       <Input
         double
