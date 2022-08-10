@@ -17,7 +17,11 @@ const App = () => {
     value: '',
     error: '',
   });
-  const [cardDate, setCardDate] = useState({
+  const [cardDay, setCardDay] = useState({
+    value: '',
+    error: '',
+  });
+  const [cardMonth, setCardMonth] = useState({
     value: '',
     error: '',
   });
@@ -77,7 +81,7 @@ const App = () => {
             <Input
               double
               title="exp, date (mm/yy)"
-              state={cardDate}
+              state={cardDay}
               changeFunc={changeDate}
             />
           </div>
