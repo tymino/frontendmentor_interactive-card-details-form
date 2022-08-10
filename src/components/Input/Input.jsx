@@ -2,11 +2,16 @@ import './Input.sass';
 
 import { memo } from 'react';
 
-const Input = ({ double = false, title = 'block', state, setState }) => {
+const Input = ({ double = false, title = 'block', state, changeFunc }) => {
   const { value, error } = state;
+
   const handleInputChange = (e) => {
-    console.log(e.target.name);
-    setState();
+    const name = e.target.name;
+    const value = e.target.value;
+
+    console.log(e.target.value.length);
+
+    changeFunc(value);
   };
 
   return (
@@ -28,11 +33,9 @@ const Input = ({ double = false, title = 'block', state, setState }) => {
           />
         )}
       </div>
-      <div className="block__error">err</div>
+      <div className="block__error">{error}</div>
     </div>
   );
-
-  return;
 };
 
 export default memo(Input);
