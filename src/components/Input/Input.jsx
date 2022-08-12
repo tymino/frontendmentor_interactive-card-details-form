@@ -2,16 +2,22 @@ import './Input.sass';
 
 import { memo } from 'react';
 
-const Input = ({ double = false, title = 'block', state, changeFunc }) => {
-  const { value, error } = state;
+const Input = ({
+  double = false,
+  title = 'block',
+  state = {},
+  state2 = {},
+  changeFunc,
+}) => {
+  const { value: valMon, error: errMon } = state;
+  const { value: valYear, error: errYear } = state2;
+  const error = errMon || errYear;
 
-  const handleInputChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+  const handleInputChange = ({ target }) => {
+    const name = target.name;
+    const value = target.value;
 
-    console.log(e.target.value.length);
-
-    changeFunc(value);
+    changeFunc(value, name);
   };
 
   return (
@@ -19,16 +25,16 @@ const Input = ({ double = false, title = 'block', state, changeFunc }) => {
       <div className="block__title">{title}</div>
       <div className="block__wrapper">
         <input
-          name="0"
+          name="mon"
           type="text"
-          value={value}
+          value={valMon}
           onChange={handleInputChange}
         />
         {double && (
           <input
-            name="1"
+            name="year"
             type="text"
-            value={value}
+            value={valYear}
             onChange={handleInputChange}
           />
         )}

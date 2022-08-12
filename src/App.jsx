@@ -6,6 +6,7 @@ const errorNames = {
   empty: "Can't be blank",
   name: 'Wrong format, letters only',
   number: 'Wrong format, numbers only',
+  date: 'Wrong date',
 };
 
 const App = () => {
@@ -17,11 +18,11 @@ const App = () => {
     value: '',
     error: '',
   });
-  const [cardDay, setCardDay] = useState({
+  const [cardMonth, setCardMonth] = useState({
     value: '',
     error: '',
   });
-  const [cardMonth, setCardMonth] = useState({
+  const [cardYear, setCardYear] = useState({
     value: '',
     error: '',
   });
@@ -55,9 +56,48 @@ const App = () => {
     }
   }, []);
 
-  const changeDate = useCallback((value) => {}, []);
+  const changeDate = useCallback((value, nameInput) => {
+    if (value.match(/[^0-9|\s]+/gi)) return;
+    if (value.length > 2) return;
 
-  const changeCVC = useCallback((value) => {}, []);
+    if (value.length === 0) {
+      if (nameInput === 'mon') {
+        setCardMonth({ value, error: errorNames.empty });
+        return;
+      }
+      if (nameInput === 'year') {
+        setCardYear({ value, error: errorNames.empty });
+        return;
+      }
+    }
+
+    if (value.length === 1 && nameInput === 'mon' && Number(value) > 1) {
+      setCardMonth({ value, error: errorNames.date });
+      return;
+    }
+    if (value.length === 2 && nameInput === 'mon' && Number(value) > 12) {
+      setCardMonth({ value, error: errorNames.date });
+      return;
+    }
+
+    if (nameInput === 'mon') {
+      setCardMonth({ value, error: '' });
+    } else if (nameInput === 'year') {
+      setCardYear({ value, error: '' });
+    }
+  }, []);
+
+  const changeCVC = useCallback((value) => {
+    if (value.match(/[^0-9|\s]+/gi)) return;
+    if (value.length > 3) return;
+
+    if (value.length === 0) {
+      setCardCVC({ value, error: errorNames.empty });
+      return;
+    }
+
+    setCardCVC({ value, error: '' });
+  }, []);
 
   return (
     <div className="app">
@@ -81,7 +121,8 @@ const App = () => {
             <Input
               double
               title="exp, date (mm/yy)"
-              state={cardDay}
+              state={cardMonth}
+              state2={cardYear}
               changeFunc={changeDate}
             />
           </div>
