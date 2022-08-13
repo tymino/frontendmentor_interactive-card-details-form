@@ -1,0 +1,28 @@
+.block
+  display: flex
+  flex-direction: column
+
+  &__title
+    margin-bottom: 6px
+    text-transform: uppercase
+
+  &__wrapper
+    & > .block__input
+      padding: 10px
+      border-radius: 5px
+      border: 1px solid var(--color-light-grayish-violet)
+
+      font-size: 1.1rem
+      font-family: var(--font-family)
+
+      outline: none
+
+      &:hover:not(.block__input--error)
+        border: 1px solid var(--color-very-dark-violet)
+      &:focus:not(.block__input--error)
+        border: 1px solid var(--color-very-dark-violet)
+
+      &--error
+        border: 1px solid var(--color-error)
+
+  &__error

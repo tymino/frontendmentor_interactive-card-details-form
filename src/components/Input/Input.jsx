@@ -20,11 +20,16 @@ const Input = ({
     changeFunc(value, name);
   };
 
+  const setStyleInput = () => {
+    return `block__input ${error ? 'block__input--error' : ''}`;
+  };
+
   return (
     <div className="block">
       <div className="block__title">{title}</div>
       <div className="block__wrapper">
         <input
+          className={setStyleInput()}
           name="mon"
           type="text"
           value={valMon}
@@ -32,6 +37,7 @@ const Input = ({
         />
         {double && (
           <input
+            className={setStyleInput()}
             name="year"
             type="text"
             value={valYear}

@@ -11,7 +11,7 @@ const errorNames = {
 
 const App = () => {
   const [cardName, setCardName] = useState({
-    value: '',
+    value: 'Qwerty Alex',
     error: '',
   });
   const [cardNumber, setCardNumber] = useState({
