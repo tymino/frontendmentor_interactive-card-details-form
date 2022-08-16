@@ -101,6 +101,8 @@ const App = () => {
 
   return (
     <div className="app">
+      <div className="app__background"></div>
+      <div className="app__card"></div>
       <div className="app__info info">
         <div className="info__name">
           <Input
