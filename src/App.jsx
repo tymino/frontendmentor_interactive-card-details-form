@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import { Input } from './components';
+import { Input, Card } from './components';
 
 const errorNames = {
   empty: "Can't be blank",
@@ -102,7 +102,9 @@ const App = () => {
   return (
     <div className="app">
       <div className="app__background"></div>
-      <div className="app__card"></div>
+      <div className="app__card">
+        <Card />
+      </div>
       <div className="app__info info">
         <div className="info__name">
           <Input
