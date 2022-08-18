@@ -11,23 +11,23 @@ const errorNames = {
 
 const App = () => {
   const [cardName, setCardName] = useState({
-    value: 'Qwerty Alex',
+    value: '',
     error: '',
   });
   const [cardNumber, setCardNumber] = useState({
-    value: '2345 3433 6758 0912',
+    value: '',
     error: '',
   });
   const [cardMonth, setCardMonth] = useState({
-    value: '06',
+    value: '',
     error: '',
   });
   const [cardYear, setCardYear] = useState({
-    value: '22',
+    value: '',
     error: '',
   });
   const [cardCVC, setCardCVC] = useState({
-    value: '787',
+    value: '',
     error: '',
   });
 
