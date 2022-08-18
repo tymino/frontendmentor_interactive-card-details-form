@@ -1,8 +1,10 @@
 .card
+  color: var(--color-white)
+
   &__front
     position: relative
     width: 400px
-    color: var(--color-white)
+
     &-image
       width: 100%
 
@@ -30,3 +32,18 @@
     &-date
       font-size: .8rem
       text-transform: uppercase
+
+  &__back
+    position: relative
+    width: 400px
+
+    &-image
+      width: 100%
+
+    &-cvc
+      position: absolute
+      top: 43%
+      right: 12%
+
+      font-size: .8rem
+      letter-spacing: .1rem

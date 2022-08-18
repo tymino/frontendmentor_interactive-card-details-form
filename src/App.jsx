@@ -15,19 +15,19 @@ const App = () => {
     error: '',
   });
   const [cardNumber, setCardNumber] = useState({
-    value: '',
+    value: '2345 3433 6758 0912',
     error: '',
   });
   const [cardMonth, setCardMonth] = useState({
-    value: '',
+    value: '06',
     error: '',
   });
   const [cardYear, setCardYear] = useState({
-    value: '',
+    value: '22',
     error: '',
   });
   const [cardCVC, setCardCVC] = useState({
-    value: '',
+    value: '787',
     error: '',
   });
 
@@ -103,7 +103,15 @@ const App = () => {
     <div className="app">
       <div className="app__background"></div>
       <div className="app__card">
-        <Card />
+        <Card
+          data={[
+            cardName.value,
+            cardNumber.value,
+            cardMonth.value,
+            cardYear.value,
+            cardCVC.value,
+          ]}
+        />
       </div>
       <div className="app__info info">
         <div className="info__name">

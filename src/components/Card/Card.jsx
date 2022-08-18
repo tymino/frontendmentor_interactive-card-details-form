@@ -1,6 +1,14 @@
 import './Card.sass';
 
-const Card = ({ cardData }) => {
+const Card = ({ data }) => {
+  const [name, number, month, year, cvc] = data;
+
+  // name = 'Ivan Ivanov',
+  // number = '0000 0000 0000 0000',
+  // month = ,
+  // year = '00',
+  // cvc = '000',
+
   return (
     <div className="card">
       <div className="card__front">
@@ -23,15 +31,26 @@ const Card = ({ cardData }) => {
             />
           </svg>
 
-          <div className="card__front-number">1231 2321 3231 2233</div>
+          <div className="card__front-number">
+            {number || '0000 0000 0000 0000'}
+          </div>
           <div className="card__front-row">
-            <div className="card__front-name">Qwerty Lenght</div>
-            <div className="card__front-date">12/09</div>
+            <div className="card__front-name">{name || 'Ivan Ivanov'}</div>
+            <div className="card__front-date">
+              {`${month || '00'}/${year || '00'}`}
+            </div>
           </div>
         </div>
       </div>
 
-      <img src="./images/bg-card-back.png" alt="card-back" />
+      <div className="card__back">
+        <img
+          className="card__back-image"
+          src="./images/bg-card-back.png"
+          alt="card-back"
+        />
+        <div className="card__back-cvc">{cvc || '000'}</div>
+      </div>
     </div>
   );
 };
