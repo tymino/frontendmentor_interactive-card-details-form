@@ -1,3 +1,4 @@
+import './App.sass';
 import { useCallback, useState } from 'react';
 
 import { Input, Card } from './components';
@@ -101,7 +102,13 @@ const App = () => {
 
   return (
     <div className="app">
-      <div className="app__background"></div>
+      <picture className="app__background">
+        <source
+          srcSet="./images/bg-main-desktop.png"
+          media="(min-width: 600px)"
+        />
+        <img src="./images/bg-main-mobile.png" alt="bg-main" />
+      </picture>
       <div className="app__card">
         <Card
           data={[
