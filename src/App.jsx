@@ -124,6 +124,7 @@ const App = () => {
         <div className="info__name">
           <Input
             title="cardholder name"
+            placeholder='e.g. Jane Appleseed'
             state={cardName}
             changeFunc={changeName}
           />
@@ -131,6 +132,7 @@ const App = () => {
         <div className="info__number">
           <Input
             title="card number"
+            placeholder='e.g. 1234 5678 9123 0000'
             state={cardNumber}
             changeFunc={changeNumber}
           />
@@ -140,15 +142,17 @@ const App = () => {
             <Input
               double
               title="exp, date (mm/yy)"
+              placeholder='MM'
               state={cardMonth}
               state2={cardYear}
               changeFunc={changeDate}
             />
           </div>
           <div className="app__row-cvc">
-            <Input title="cvc" state={cardCVC} changeFunc={changeCVC} />
+            <Input title="cvc" placeholder='e.g. 123' state={cardCVC} changeFunc={changeCVC} />
           </div>
         </div>
+        <button className='info__confirm'>confirm</button>
       </div>
     </div>
   );

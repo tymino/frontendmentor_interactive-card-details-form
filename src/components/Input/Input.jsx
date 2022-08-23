@@ -5,6 +5,7 @@ import { memo } from 'react';
 const Input = ({
   double = false,
   title = 'block',
+  placeholder = 'Enter',
   state = {},
   state2 = {},
   changeFunc,
@@ -32,6 +33,7 @@ const Input = ({
           className={setStyleInput()}
           name="mon"
           type="text"
+          placeholder={placeholder}
           value={valMon}
           onChange={handleInputChange}
         />
@@ -40,6 +42,7 @@ const Input = ({
             className={setStyleInput()}
             name="year"
             type="text"
+            placeholder='YY'
             value={valYear}
             onChange={handleInputChange}
           />
