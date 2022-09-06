@@ -100,6 +100,14 @@ const App = () => {
     setCardCVC({ value, error: '' });
   }, []);
 
+  /*
+
+  - разделить инпуты и уменьшить количество "ответственности"
+  - отказаться от "компонентных" блоков
+  - упростить всю структуру документа
+
+  */
+
   return (
     <div className="app">
       <picture className="app__background">
