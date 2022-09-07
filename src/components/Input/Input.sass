@@ -7,44 +7,36 @@
     text-transform: uppercase
 
   &__wrapper
-    position: relative
     display: flex
 
-    &::before
-      content: ''
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      background: linear-gradient(to left, #743ad5, #d53a9d)
-      border-radius: 5px
+  &__border
+    background: linear-gradient(to left, #743ad5, #d53a9d)
+    border-radius: 5px
 
     & > .block__input
       width: 100%
       padding: 10px
-      margin: 2px
 
       font-size: 1.1rem
       font-family: var(--font-family)
 
       border-radius: 5px
-      border: none
+      background: var(--color-white)
       outline: none
-      z-index: 5
 
-      &::placeholder
-        color: red
+  &__input
+    &:hover:not(.block__input--error)
+      border: 1px solid var(--color-very-dark-violet)
+    &:focus:not(.block__input--error)
+      border: 1px solid var(--color-very-dark-violet)
 
-      &:hover:not(.block__input--error)
-        border: 1px solid var(--color-very-dark-violet)
-      &:focus:not(.block__input--error)
-        border: 1px solid var(--color-very-dark-violet)
+    &::placeholder
+      color: red
 
-      &--error
-        border: 1px solid var(--color-error)
+    &--error
+      border: 1px solid var(--color-error)
 
-      &:nth-child(2n)
-        margin-left: 10px
+    &:nth-child(2n)
+      margin-right: 10px
 
   &__error

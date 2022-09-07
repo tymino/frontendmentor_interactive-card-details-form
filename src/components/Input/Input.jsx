@@ -21,31 +21,41 @@ const Input = ({
     changeFunc(value, name);
   };
 
+  // rename func
   const setStyleInput = () => {
     return `block__input ${error ? 'block__input--error' : ''}`;
   };
+
+  // ------
+  // Стили:
+  // Ошибки и прочее вынести в доп.блок
+  // Классы инпута ничего не должны делать (наверное)
 
   return (
     <div className="block">
       <div className="block__title">{title}</div>
       <div className="block__wrapper">
-        <input
-          className={setStyleInput()}
-          name="mon"
-          type="text"
-          placeholder={placeholder}
-          value={valMon}
-          onChange={handleInputChange}
-        />
-        {double && (
+        <div className="block__border">
           <input
             className={setStyleInput()}
-            name="year"
+            name="mon"
             type="text"
-            placeholder='YY'
-            value={valYear}
+            placeholder={placeholder}
+            value={valMon}
             onChange={handleInputChange}
           />
+        </div>
+        {double && (
+          <div className="block__border">
+            <input
+              className={setStyleInput()}
+              name="year"
+              type="text"
+              placeholder="YY"
+              value={valYear}
+              onChange={handleInputChange}
+            />
+          </div>
         )}
       </div>
       <div className="block__error">{error}</div>
