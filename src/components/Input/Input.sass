@@ -1,7 +1,8 @@
 .block
+  position: relative
   display: flex
   flex-direction: column
-  margin: 10px
+  margin: 20px 0
 
   &__title
     margin-bottom: 6px
@@ -10,25 +11,53 @@
   &__container
     display: flex
 
-  // &__error
+  &__error
+    content: ''
+    position: absolute
+    bottom: -26px
+    left: 0
+    color: var(--color-error)
 
   &__input
     position: relative
     display: flex
     align-items: center
-    padding: 10px
+    padding: 8px
+    width: 100%
 
     font-size: 1.1rem
     font-family: var(--font-family)
-    outline: none
+    color: var(--color-very-dark-violet)
 
-    box-sizing: border-box
-
-    color: #f82222
     background: #FFF
     background-clip: padding-box
     border: none
     border-radius: 10px
+    box-sizing: border-box
+    outline: none
+
+    cursor: pointer
+    
+    &::placeholder
+      color: var(--color-light-grayish-violet)
+
+    &:nth-child(2n)
+      margin-left: 20px
+    
+    &:hover::before
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      z-index: -1
+      margin: -2px
+      border-radius: inherit
+      background: var(--color-dark-grayish-violet)
+    
+    &:focus
+      cursor: auto
 
     &:focus-within::before
       content: ''
@@ -40,7 +69,7 @@
       z-index: -1
       margin: -2px
       border-radius: inherit
-      background: var(--color-error)
+      background: linear-gradient(to left, var(--color-active-input-from), var(--color-active-input-to))
 
     &:before
       content: ''
@@ -52,7 +81,16 @@
       z-index: -1
       margin: -2px
       border-radius: inherit
-      background: linear-gradient(to left, #743ad5, #d53a9d)
+      background: var(--color-light-grayish-violet)
 
-    // &::placeholder
-    //   color: red
+    &--error:hover::before, &--error:focus-within::before, &--error:before
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      z-index: -1
+      margin: -2px
+      border-radius: inherit
+      background: var(--color-error)

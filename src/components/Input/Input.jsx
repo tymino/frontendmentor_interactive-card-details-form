@@ -39,8 +39,8 @@ const Input = ({
             onChange={handleInputChange}
           />
         </div>
-        {/* {double && (
-          <div className={setStyleBorder()}>
+        {double && (
+          <div className={setStyleInput()}>
             <input
               className="block__input"
               name="year"
@@ -50,7 +50,7 @@ const Input = ({
               onChange={handleInputChange}
             />
           </div>
-        )} */}
+        )}
       </div>
       <div className="block__error">{error}</div>
     </div>

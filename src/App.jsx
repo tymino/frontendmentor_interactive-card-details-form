@@ -138,7 +138,7 @@ const App = () => {
             changeFunc={changeNumber}
           />
         </div>
-        <div className="info__wrapper">
+        <div className="info__row-date-cvc">
           <div className="info__row-date">
             <Input
               double
@@ -149,7 +149,7 @@ const App = () => {
               changeFunc={changeDate}
             />
           </div>
-          <div className="app__row-cvc">
+          <div className="info__row-cvc">
             <Input title="cvc" placeholder='e.g. 123' state={cardCVC} changeFunc={changeCVC} />
           </div>
         </div>
