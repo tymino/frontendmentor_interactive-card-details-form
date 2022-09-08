@@ -1,6 +1,6 @@
 import './Input.sass';
 
-import { memo, useState } from 'react';
+import { memo } from 'react';
 
 const Input = ({
   double = false,

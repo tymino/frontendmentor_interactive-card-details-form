@@ -2,10 +2,11 @@
   position: relative
   display: flex
   flex-direction: column
-  margin: 20px 0
+  margin: 16px 0
 
   &__title
-    margin-bottom: 6px
+    margin-bottom: 10px
+    color: var(--color-very-dark-violet)
     text-transform: uppercase
 
   &__container
@@ -17,12 +18,14 @@
     bottom: -26px
     left: 0
     color: var(--color-error)
+    font-size: .9rem
 
   &__input
     position: relative
     display: flex
     align-items: center
-    padding: 8px
+    padding: 6px
+    margin: 0 2px
     width: 100%
 
     font-size: 1.1rem
@@ -35,7 +38,6 @@
     border-radius: 10px
     box-sizing: border-box
     outline: none
-
     cursor: pointer
     
     &::placeholder
