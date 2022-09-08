@@ -1,6 +1,6 @@
 import './Input.sass';
 
-import { memo } from 'react';
+import { memo, useState } from 'react';
 
 const Input = ({
   double = false,
@@ -21,23 +21,17 @@ const Input = ({
     changeFunc(value, name);
   };
 
-  // rename func
   const setStyleInput = () => {
     return `block__input ${error ? 'block__input--error' : ''}`;
   };
 
-  // ------
-  // Стили:
-  // Ошибки и прочее вынести в доп.блок
-  // Классы инпута ничего не должны делать (наверное)
-
   return (
     <div className="block">
       <div className="block__title">{title}</div>
-      <div className="block__wrapper">
-        <div className="block__border">
+      <div className="block__container">
+        <div className={setStyleInput()}>
           <input
-            className={setStyleInput()}
+            className="block__input"
             name="mon"
             type="text"
             placeholder={placeholder}
@@ -45,10 +39,10 @@ const Input = ({
             onChange={handleInputChange}
           />
         </div>
-        {double && (
-          <div className="block__border">
+        {/* {double && (
+          <div className={setStyleBorder()}>
             <input
-              className={setStyleInput()}
+              className="block__input"
               name="year"
               type="text"
               placeholder="YY"
@@ -56,7 +50,7 @@ const Input = ({
               onChange={handleInputChange}
             />
           </div>
-        )}
+        )} */}
       </div>
       <div className="block__error">{error}</div>
     </div>

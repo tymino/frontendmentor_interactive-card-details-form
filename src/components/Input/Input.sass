@@ -1,42 +1,58 @@
 .block
   display: flex
   flex-direction: column
+  margin: 10px
 
   &__title
     margin-bottom: 6px
     text-transform: uppercase
 
-  &__wrapper
+  &__container
     display: flex
 
-  &__border
-    background: linear-gradient(to left, #743ad5, #d53a9d)
-    border-radius: 5px
-
-    & > .block__input
-      width: 100%
-      padding: 10px
-
-      font-size: 1.1rem
-      font-family: var(--font-family)
-
-      border-radius: 5px
-      background: var(--color-white)
-      outline: none
+  // &__error
 
   &__input
-    &:hover:not(.block__input--error)
-      border: 1px solid var(--color-very-dark-violet)
-    &:focus:not(.block__input--error)
-      border: 1px solid var(--color-very-dark-violet)
+    position: relative
+    display: flex
+    align-items: center
+    padding: 10px
 
-    &::placeholder
-      color: red
+    font-size: 1.1rem
+    font-family: var(--font-family)
+    outline: none
 
-    &--error
-      border: 1px solid var(--color-error)
+    box-sizing: border-box
 
-    &:nth-child(2n)
-      margin-right: 10px
+    color: #f82222
+    background: #FFF
+    background-clip: padding-box
+    border: none
+    border-radius: 10px
 
-  &__error
+    &:focus-within::before
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      z-index: -1
+      margin: -2px
+      border-radius: inherit
+      background: var(--color-error)
+
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      z-index: -1
+      margin: -2px
+      border-radius: inherit
+      background: linear-gradient(to left, #743ad5, #d53a9d)
+
+    // &::placeholder
+    //   color: red
