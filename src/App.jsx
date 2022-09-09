@@ -106,7 +106,7 @@ const App = () => {
       <picture className="app__background">
         <source
           srcSet="./images/bg-main-desktop.png"
-          media="(min-width: 600px)"
+          media="(min-width: 900px)"
         />
         <img src="./images/bg-main-mobile.png" alt="bg-main" />
       </picture>

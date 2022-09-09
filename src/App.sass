@@ -14,7 +14,11 @@
 
     & > img
       display: block
+      width: 34vw
       height: 100%
+    
+    & > source
+      width: 40%
 
   // &__card
   &__info
@@ -46,3 +50,8 @@
 
     &:hover
       background: var(--color-very-dark-violet-hover)
+
+@media (max-width: 900px)
+  .app
+    flex-direction: column
+    
