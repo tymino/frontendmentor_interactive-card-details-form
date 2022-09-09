@@ -33,6 +33,12 @@ const App = () => {
   });
 
   const changeName = useCallback((value) => {
+    if (value.length > 19) return;
+    if (value.length === 0) {
+      setCardName({ value, error: errorNames.empty });
+      return;
+    }
+
     value.match(/[^a-z|\s]+/gi)
       ? setCardName({ value, error: errorNames.name })
       : setCardName({ value, error: '' });
@@ -100,7 +106,6 @@ const App = () => {
     setCardCVC({ value, error: '' });
   }, []);
 
-
   return (
     <div className="app">
       <picture className="app__background">
@@ -125,7 +130,7 @@ const App = () => {
         <div className="info__name">
           <Input
             title="cardholder name"
-            placeholder='e.g. Jane Appleseed'
+            placeholder="e.g. Jane Appleseed"
             state={cardName}
             changeFunc={changeName}
           />
@@ -133,7 +138,7 @@ const App = () => {
         <div className="info__number">
           <Input
             title="card number"
-            placeholder='e.g. 1234 5678 9123 0000'
+            placeholder="e.g. 1234 5678 9123 0000"
             state={cardNumber}
             changeFunc={changeNumber}
           />
@@ -143,17 +148,22 @@ const App = () => {
             <Input
               double
               title="exp, date (mm/yy)"
-              placeholder='MM'
+              placeholder="MM"
               state={cardMonth}
               state2={cardYear}
               changeFunc={changeDate}
             />
           </div>
           <div className="info__row-cvc">
-            <Input title="cvc" placeholder='e.g. 123' state={cardCVC} changeFunc={changeCVC} />
+            <Input
+              title="cvc"
+              placeholder="e.g. 123"
+              state={cardCVC}
+              changeFunc={changeCVC}
+            />
           </div>
         </div>
-        <button className='info__confirm'>confirm</button>
+        <button className="info__confirm">confirm</button>
       </div>
     </div>
   );

@@ -37,6 +37,7 @@ const Input = ({
             placeholder={placeholder}
             value={valMon}
             onChange={handleInputChange}
+            onBlur={handleInputChange}
           />
         </div>
         {double && (
