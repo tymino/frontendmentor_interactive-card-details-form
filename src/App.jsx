@@ -1,7 +1,7 @@
 import './App.sass';
 import { useCallback, useState } from 'react';
 
-import { Button, Card, Input } from './components';
+import { Alert, Button, Card, Input } from './components';
 
 const errorNames = {
   empty: "Can't be blank",
@@ -12,7 +12,7 @@ const errorNames = {
 };
 
 const App = () => {
-  const [isSavedDetails, setIsSavedDetails] = useState(false);
+  const [isSavedDetails, setIsSavedDetails] = useState(true);
 
   const [cardName, setCardName] = useState({
     value: '',
@@ -61,6 +61,8 @@ const App = () => {
 
     if (updateValue.match(/[^0-9|\s]+/gi)) {
       setCardNumber({ value: updateValue, error: errorNames.number });
+    } else if (updateValue.length < 19) {
+      setCardNumber({ value: updateValue, error: errorNames.format });
     } else {
       setCardNumber({ value: updateValue, error: '' });
     }
@@ -85,7 +87,7 @@ const App = () => {
       setCardMonth({ value: `0${value}`, error: '' });
       return;
     }
-    
+
     if (value.length === 1 && nameInput === 'mon' && Number(value) < 2) {
       setCardMonth({ value, error: errorNames.date });
       return;
@@ -165,47 +167,53 @@ const App = () => {
           ]}
         />
       </div>
-      <div className="app__info info">
-        <div className="info__name">
-          <Input
-            title="cardholder name"
-            placeholder="e.g. Jane Appleseed"
-            state={cardName}
-            changeFunc={changeName}
-          />
+      {isSavedDetails ? (
+        <div className="app__info">
+          <Alert handleBackTab={handleContinue} />
         </div>
-        <div className="info__number">
-          <Input
-            title="card number"
-            placeholder="e.g. 1234 5678 9123 0000"
-            state={cardNumber}
-            changeFunc={changeNumber}
-          />
-        </div>
-        <div className="info__row-date-cvc">
-          <div className="info__row-date">
+      ) : (
+        <div className="app__info info">
+          <div className="info__name">
             <Input
-              double
-              title="exp, date (mm/yy)"
-              placeholder="MM"
-              state={cardMonth}
-              state2={cardYear}
-              changeFunc={changeDate}
+              title="cardholder name"
+              placeholder="e.g. Jane Appleseed"
+              state={cardName}
+              changeFunc={changeName}
             />
           </div>
-          <div className="info__row-cvc">
+          <div className="info__number">
             <Input
-              title="cvc"
-              placeholder="e.g. 123"
-              state={cardCVC}
-              changeFunc={changeCVC}
+              title="card number"
+              placeholder="e.g. 1234 5678 9123 0000"
+              state={cardNumber}
+              changeFunc={changeNumber}
             />
           </div>
+          <div className="info__row-date-cvc">
+            <div className="info__row-date">
+              <Input
+                double
+                title="exp, date (mm/yy)"
+                placeholder="MM"
+                state={cardMonth}
+                state2={cardYear}
+                changeFunc={changeDate}
+              />
+            </div>
+            <div className="info__row-cvc">
+              <Input
+                title="cvc"
+                placeholder="e.g. 123"
+                state={cardCVC}
+                changeFunc={changeCVC}
+              />
+            </div>
+          </div>
+          <div className="info__confirm">
+            <Button name="confirm" handleClick={handleConfirm} />
+          </div>
         </div>
-        <div className="info__confirm">
-          <Button name="confirm" handleClick={handleConfirm} />
-        </div>
-      </div>
+      )}
     </div>
   );
 };
