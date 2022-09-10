@@ -1,13 +1,14 @@
 import './Card.sass';
 
+const defaultValues = {
+  name: 'Ivan Ivanov',
+  number: '0000 0000 0000 0000',
+  month: '00',
+  year: '00',
+  cvc: '000',
+};
 const Card = ({ data }) => {
   const [name, number, month, year, cvc] = data;
-
-  // name = 'Ivan Ivanov',
-  // number = '0000 0000 0000 0000',
-  // month = ,
-  // year = '00',
-  // cvc = '000',
 
   return (
     <div className="card">
@@ -23,7 +24,8 @@ const Card = ({ data }) => {
             width="84"
             height="47"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <ellipse cx="23.478" cy="23.5" rx="23.478" ry="23.5" fill="#fff" />
             <path
               d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z"
@@ -32,12 +34,12 @@ const Card = ({ data }) => {
           </svg>
 
           <div className="card__front-number">
-            {number || '0000 0000 0000 0000'}
+            {number || defaultValues.number}
           </div>
           <div className="card__front-row">
-            <div className="card__front-name">{name || 'Ivan Ivanov'}</div>
+            <div className="card__front-name">{name || defaultValues.name}</div>
             <div className="card__front-date">
-              {`${month || '00'}/${year || '00'}`}
+              {`${month || defaultValues.month}/${year || defaultValues.year}`}
             </div>
           </div>
         </div>
@@ -49,7 +51,7 @@ const Card = ({ data }) => {
           src="./images/bg-card-back.png"
           alt="card-back"
         />
-        <div className="card__back-cvc">{cvc || '000'}</div>
+        <div className="card__back-cvc">{cvc || defaultValues.cvc}</div>
       </div>
     </div>
   );
