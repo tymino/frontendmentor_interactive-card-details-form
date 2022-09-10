@@ -12,7 +12,7 @@ const errorNames = {
 };
 
 const App = () => {
-  const [isSavedDetails, setIsSavedDetails] = useState(true);
+  const [isSavedDetails, setIsSavedDetails] = useState(false);
 
   const [cardName, setCardName] = useState({
     value: '',
@@ -138,7 +138,20 @@ const App = () => {
       cardYear.error ||
       cardCVC.error;
 
-    if (!hasError) {
+    const isEmptyField =
+      cardName.value &&
+      cardNumber.value &&
+      cardMonth.value &&
+      cardYear.value &&
+      cardCVC.value;
+
+    changeName(cardName.value);
+    changeNumber(cardNumber.value);
+    changeDate(cardMonth.value, 'mon');
+    changeDate(cardYear.value, 'year');
+    changeCVC(cardCVC.value);
+
+    if (!hasError && isEmptyField) {
       setIsSavedDetails(true);
     }
   };
