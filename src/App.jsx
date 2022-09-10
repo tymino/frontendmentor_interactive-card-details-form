@@ -1,16 +1,19 @@
 import './App.sass';
 import { useCallback, useState } from 'react';
 
-import { Input, Card } from './components';
+import { Button, Card, Input } from './components';
 
 const errorNames = {
   empty: "Can't be blank",
   name: 'Wrong format, letters only',
   number: 'Wrong format, numbers only',
   date: 'Wrong date',
+  format: 'Wrong format',
 };
 
 const App = () => {
+  const [isSavedDetails, setIsSavedDetails] = useState(false);
+
   const [cardName, setCardName] = useState({
     value: '',
     error: '',
@@ -79,9 +82,15 @@ const App = () => {
     }
 
     if (value.length === 1 && nameInput === 'mon' && Number(value) > 1) {
+      setCardMonth({ value: `0${value}`, error: '' });
+      return;
+    }
+    
+    if (value.length === 1 && nameInput === 'mon' && Number(value) < 2) {
       setCardMonth({ value, error: errorNames.date });
       return;
     }
+
     if (value.length === 2 && nameInput === 'mon' && Number(value) > 12) {
       setCardMonth({ value, error: errorNames.date });
       return;
@@ -89,7 +98,15 @@ const App = () => {
 
     if (nameInput === 'mon') {
       setCardMonth({ value, error: '' });
-    } else if (nameInput === 'year') {
+      return;
+    }
+
+    if (nameInput === 'year') {
+      if (value.length < 2) {
+        setCardYear({ value, error: errorNames.date });
+        return;
+      }
+
       setCardYear({ value, error: '' });
     }
   }, []);
@@ -103,8 +120,30 @@ const App = () => {
       return;
     }
 
+    if (value.length < 3) {
+      setCardCVC({ value, error: errorNames.format });
+      return;
+    }
+
     setCardCVC({ value, error: '' });
   }, []);
+
+  const handleConfirm = () => {
+    const hasError =
+      cardName.error ||
+      cardNumber.error ||
+      cardMonth.error ||
+      cardYear.error ||
+      cardCVC.error;
+
+    if (!hasError) {
+      setIsSavedDetails(true);
+    }
+  };
+
+  const handleContinue = () => {
+    setIsSavedDetails(false);
+  };
 
   return (
     <div className="app">
@@ -163,7 +202,9 @@ const App = () => {
             />
           </div>
         </div>
-        <button className="info__confirm">confirm</button>
+        <div className="info__confirm">
+          <Button name="confirm" handleClick={handleConfirm} />
+        </div>
       </div>
     </div>
   );

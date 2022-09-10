@@ -7,6 +7,7 @@ const defaultValues = {
   year: '00',
   cvc: '000',
 };
+
 const Card = ({ data }) => {
   const [name, number, month, year, cvc] = data;
 

@@ -1,7 +1,12 @@
-import 'Button.sass';
+import './Button.sass';
+import { memo } from 'react';
 
-const Button = () => {
-  return <button>asd</button>;
+const Button = ({ name = 'click', handleClick = null }) => {
+  return (
+    <button className="button" onClick={handleClick}>
+      {name}
+    </button>
+  );
 };
 
-export default Button;
+export default memo(Button);

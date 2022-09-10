@@ -10,19 +10,19 @@ const Input = ({
   state2 = {},
   changeFunc,
 }) => {
-  const { value: valMon, error: errMon } = state;
-  const { value: valYear, error: errYear } = state2;
-  const error = errMon || errYear;
+  const { value: val1, error: err1 } = state;
+  const { value: val2, error: err2 } = state2;
+  const error = err1 || err2;
+
+  const setStyleInput = () => {
+    return `block__input ${error ? 'block__input--error' : ''}`;
+  };
 
   const handleInputChange = ({ target }) => {
     const name = target.name;
     const value = target.value;
 
     changeFunc(value, name);
-  };
-
-  const setStyleInput = () => {
-    return `block__input ${error ? 'block__input--error' : ''}`;
   };
 
   return (
@@ -35,7 +35,7 @@ const Input = ({
             name="mon"
             type="text"
             placeholder={placeholder}
-            value={valMon}
+            value={val1}
             onChange={handleInputChange}
             onBlur={handleInputChange}
           />
@@ -47,8 +47,9 @@ const Input = ({
               name="year"
               type="text"
               placeholder="YY"
-              value={valYear}
+              value={val2}
               onChange={handleInputChange}
+              onBlur={handleInputChange}
             />
           </div>
         )}
