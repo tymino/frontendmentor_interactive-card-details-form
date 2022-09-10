@@ -1,7 +1,7 @@
 import './App.sass';
 import { useCallback, useState } from 'react';
 
-import { Alert, Button, Card, Input } from './components';
+import { Alert, Attribution, Button, Card, Input } from './components';
 
 const errorNames = {
   empty: "Can't be blank",
@@ -233,6 +233,9 @@ const App = () => {
           </div>
         </div>
       )}
+      <div className="app__attribution">
+        <Attribution />
+      </div>
     </div>
   );
 };

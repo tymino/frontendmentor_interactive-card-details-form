@@ -1,5 +1,4 @@
 import './Button.sass';
-import { memo } from 'react';
 
 const Button = ({ name = 'click', handleClick = null }) => {
   return (
@@ -9,4 +8,4 @@ const Button = ({ name = 'click', handleClick = null }) => {
   );
 };
 
-export default memo(Button);
+export default Button;
