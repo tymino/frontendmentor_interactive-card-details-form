@@ -157,6 +157,12 @@ const App = () => {
   };
 
   const handleContinue = () => {
+    setCardName({ value: '', error: '' });
+    setCardNumber({ value: '', error: '' });
+    setCardMonth({ value: '', error: '' });
+    setCardYear({ value: '', error: '' });
+    setCardCVC({ value: '', error: '' });
+
     setIsSavedDetails(false);
   };
 
